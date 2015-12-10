@@ -1,4 +1,4 @@
-var WORKER_PATH = './recorderWorker.js';
+var RecorderWorker = require("worker!./recorderWorker.js");
 
 var Recorder = function(source, cfg){
   var config = cfg || {};
@@ -8,7 +8,7 @@ var Recorder = function(source, cfg){
   this.node = (this.context.createScriptProcessor ||
                this.context.createJavaScriptNode).call(this.context,
                bufferLen, numChannels, numChannels);
-  var worker = new Worker(WORKER_PATH);
+  var worker = new RecorderWorker();
   worker.postMessage({
     command: 'init',
     config: {

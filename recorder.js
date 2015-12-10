@@ -1,4 +1,4 @@
-var RecorderWorker = require("worker!./recorderWorker.js");
+var RecorderWorker = require("worker?inline!./recorderWorker.js");
 
 var Recorder = function(source, cfg){
   var config = cfg || {};
